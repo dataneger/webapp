@@ -1,4 +1,5 @@
 <?php
+    include('../src/preloader.php');
     include('header.php');
 ?>
 <body>

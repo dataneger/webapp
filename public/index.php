@@ -1,8 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-    include('../src/preload.php');
-    $result = $mysql->query("SELECT * FROM user");
     include('header.php');
 ?>
 <body>
@@ -25,41 +21,13 @@ ini_set('display_errors', 1);
     <div class="container d-flex flex-wrap justify-content-center">
         <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
             <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-            <span class="fs-4">ssDouble header</span>
+            <span class="fs-4">Waldys World</span>
         </a>
         <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
             <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
         </form>
     </div>
 </header>
-
-<div class="container">
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">name</th>
-            <th scope="col">email</th>
-            <th scope="col">last login</th>
-            <th scope="col">Delete</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-        foreach($result as $user){
-            echo '<tr>';
-            echo '<th scope="row">'.$user['id'].'</th>';
-            echo '<td>'.$user['name'].'</td>';
-            echo '<td>'.$user['email'].'</td>';
-            echo '<td>'.$user['last_login'].'</td>';
-            echo '<td><a href="/api.php?delete=true&userid='.$user['id'].'"><button type="button" class="btn btn-danger">delete '.$user['name'].'?</button></a></td>';
-            echo '</tr>';
-        }
-        ?>
-
-        </tbody>
-    </table>
-</div>
 
 <div class="container col-xxl-8 px-4 py-5">
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">

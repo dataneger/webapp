@@ -1,5 +1,5 @@
 <?php
-    include('../src/preloader.php');
+    include('../src/preload.php');
     include('header.php');
 ?>
 <body>
@@ -7,10 +7,10 @@
     <div class="container d-flex flex-wrap">
         <ul class="nav me-auto">
             <li class="nav-item"><a href="#" class="nav-link link-dark px-2 active" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Features</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Pricing</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-dark px-2">FAQs</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-dark px-2">About</a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Tietjes</a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Wietjes</a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Liedjes</a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Gehaktballen</a></li>
         </ul>
         <ul class="nav">
             <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Login</a></li>
@@ -30,10 +30,38 @@
     </div>
 </header>
 
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">email</th>
+            <th scope="col">golf skills</th>
+            <th scope="col">last login</th>            
+        </tr>
+        </thead>
+        <tbody>
+        <?php 
+        $result = $mysql->query("SELECT * FROM new");
+        foreach($result as $user){   
+            echo '<tr>';
+            echo '<td>'.$user['id'].'</td>';
+            echo '<td>'.$user['name'].'</td>';
+            echo '<td>'.$user['email'].'</td>';
+            echo '<td>'.$user['golf_skills'].'</td>';
+            echo '<td>'.$user['last_login'].'</td>';  
+            echo '</tr>';                  
+        }
+        ?>    
+        </tbody>
+    </table>
+</div>
+
 <div class="container col-xxl-8 px-4 py-5">
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
         <div class="col-10 col-sm-8 col-lg-6">
-            <img src="https://getbootstrap.com/docs/5.2/examples/heroes/bootstrap-themes.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+            <img src="https://i2-prod.dailystar.co.uk/incoming/article19560973.ece/ALTERNATES/s1227b/0_httpscdnimagesdailystarcoukdynamic122photos359000900x738931359" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
         </div>
         <div class="col-lg-6">
             <h1 class="display-5 fw-bold lh-1 mb-3">Responsive left-aligned hero with image</h1>
@@ -149,7 +177,7 @@
             <div class="col-md-5 offset-md-1 mb-3">
                 <form>
                     <h5>Subscribe to our newsletter</h5>
-                    <p>Monthly digest of what's new and exciting from us.</p>
+                    <p>Monthly digest of what's user and exciting from us.</p>
                     <div class="d-flex flex-column flex-sm-row w-100 gap-2">
                         <label for="newsletter1" class="visually-hidden">Email address</label>
                         <input id="newsletter1" type="text" class="form-control" placeholder="Email address">

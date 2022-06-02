@@ -14,7 +14,7 @@
         </ul>
         <ul class="nav">
             <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Login</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Sign up</a></li>
+            <li class="nav-item"><a data-bs-toggle="modal" data-bs-target="#signUpModal" href="#" class="nav-link link-dark px-2">Sign up</a></li>
         </ul>
     </div>
 </nav>
@@ -43,7 +43,7 @@
         </thead>
         <tbody>
         <?php 
-        $result = $mysql->query("SELECT * FROM new");
+        $result = $mysql->query("SELECT * FROM User");
         foreach($result as $user){   
             echo '<tr>';
             echo '<td>'.$user['id'].'</td>';
@@ -197,5 +197,36 @@
         </div>
     </footer>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" action="/api.php">
+         <input type="hidden" name="signup" value="true">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="password">
+            </div> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

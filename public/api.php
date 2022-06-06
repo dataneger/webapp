@@ -7,8 +7,7 @@ if( isset($_POST['signup'])){
         header('Location: /');
 }
 if( isset($_POST['login'])){
-    $mysql->query("SELECT paswoord FROM User WHERE user");
-        IF ('".$_POST['password']."') == paswoord");
+    $user = $mysql->query("SELECT * FROM User WHERE email = '".$_POST['email']."' AND paswoord = '".$_POST['password']."'");
         echo("Error description: " . $mysql -> error);
         header('Location: /');
 }

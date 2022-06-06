@@ -6,6 +6,12 @@ if( isset($_POST['signup'])){
         echo("Error description: " . $mysql -> error);
         header('Location: /');
 }
+if( isset($_POST['login'])){
+    $mysql->query("SELECT paswoord FROM User WHERE user");
+        IF ('".$_POST['password']."') == paswoord");
+        echo("Error description: " . $mysql -> error);
+        header('Location: /');
+}
 //INSERT INTO User (email, paswoord) VALUES (joris@bruijn.nl, ingetiktwachtwoord)
 //var_dump($_POST);
     // if ($_GET['delete'] == true) {

@@ -3,17 +3,20 @@ include('../src/preload.php');
 
 if( isset($_POST['signup'])){
     $mysql->query("INSERT INTO User (email, paswoord) VALUES ('".$_POST['email']."', '".$_POST['password']."')");
-        echo("Error description: " . $mysql -> error);
-        header('Location: /');
+    header('Location: /');
 }
+
 if( isset($_POST['login'])){
     $user = $mysql->query("SELECT * FROM User WHERE email = '".$_POST['email']."' AND paswoord = '".$_POST['password']."'");
-        echo("Error description: " . $mysql -> error);
-        header('Location: /');
+    if($user->num_rows > 0){
+        $_SESSION["user"] = $user->fetch_array();
+        setcookie("loggedin", $_POST['email'], time () +86400);    
+    }        
+    header('Location: /');
 }
-//INSERT INTO User (email, paswoord) VALUES (joris@bruijn.nl, ingetiktwachtwoord)
-//var_dump($_POST);
-    // if ($_GET['delete'] == true) {
-    //     echo 'deleting user' . $_GET['userid'];
-    //     $mysql->query("delete from user where id = " . $_GET['userid']);
-    // }
+
+if( isset($_GET['logout'])){
+    session_unset();
+    header('Location: /');
+}
+
